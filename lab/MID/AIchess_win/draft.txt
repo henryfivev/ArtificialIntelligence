@@ -1,0 +1,35 @@
+ai第二步时的棋盘
+[[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>], 
+[None, None, None, None, None, None, None, None, None], 
+[None, None, None, None, <Chess Sprite(in 0 groups)>, None, None, <Chess Sprite(in 0 groups)>, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, None, None, None, None, None, None, None, None], 
+[None, None, None, None, <Chess Sprite(in 0 groups)>, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, None, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, <Chess Sprite(in 0 groups)>, None, None, <Chess Sprite(in 0 groups)>, None, None, None, None], 
+[None, None, None, None, None, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>]]
+
+我ai第二步时的棋盘
+[[None, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>], 
+[None, None, None, None, None, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, None, None, None, None, None, <Chess Sprite(in 0 groups)>, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, None, None, None, None, None, None, None, None], 
+[None, None, None, None, <Chess Sprite(in 0 groups)>, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, None, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, <Chess Sprite(in 0 groups)>, None, None, <Chess Sprite(in 0 groups)>, None, None, None, None], 
+[None, None, None, None, None, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>]]
+发现是self.old_pos和self.nxt_pos没初始化
+
+[[None, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>],
+[None, None, None, None, None, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, None, None, None, None, None, <Chess Sprite(in 0 groups)>, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, None, None, None, None, None, None, None, None], 
+[None, None, None, None, <Chess Sprite(in 0 groups)>, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>, None, None, None, <Chess Sprite(in 0 groups)>, None, <Chess Sprite(in 0 groups)>], 
+[None, <Chess Sprite(in 0 groups)>, None, None, None, None, None, <Chess Sprite(in 0 groups)>, None], 
+[None, None, None, None, None, None, None, None, None], 
+[<Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>, <Chess Sprite(in 0 groups)>]]

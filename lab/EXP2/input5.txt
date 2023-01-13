@@ -1,0 +1,7 @@
+A(tony)
+L(tony,rain)
+L(tony,snow)
+(!A(w),!C(w),S(w))
+(!A(f(x)),S(x),C(x))
+(!C(y),!L(y,rain))
+(!L(tony,v),L(mike,v))

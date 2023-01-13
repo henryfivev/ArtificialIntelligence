@@ -1,0 +1,187 @@
+def DFS(point):
+    将point标记为已访问
+    row = point纵坐标
+    col = point横坐标
+    可行方向fd = [1, 1, 1, 1]
+
+    if point == end:
+        ret = 1
+    else:
+        若point四周的点可行 and 未访问过:
+            fd对应位置改为对应点的坐标
+
+        若fd没变:
+            返回上一级DFS
+        否则:
+            遍历fd中可行的点:
+                DFS(对应点)
+                若ret为1:
+                    可在这里输出路径
+                    fd = [1, 1, 1, 1]
+
+
+def BFS(start):
+    将start加进队列中
+    while (not ret):
+        point = 队列第一个，pop
+        将point标记为已访问
+        row = point纵坐标
+        col = point横坐标
+
+        if point == end:
+            ret = 1
+
+        若point四周的点可行 and 未访问:
+            将对应点加进队列
+
+
+def BBFS():
+    h = {}
+    reach = false
+    que = [[], [], []]
+    que[1],que[2]分别加进start和end
+
+    for d in range(rowlen*collen):
+        dir为1时正向，2时反向
+        遍历que[dir]:
+            point = 队列第一个，pop
+            将point标记为已访问
+            row = point纵坐标
+            col = point横坐标
+
+            若point四周的点可行 and 未访问:
+                将对应点加进队列
+
+            若h中对应位置的值加dir == 3:
+                表示存在节点被两边都搜过了
+            h[对应位置] = dir
+
+
+def uniformCostSearch(problem):
+    # 初始化相关参数
+    result = []
+    explored = set()
+    frontier = util.PriorityQueue()
+    # 定义起始状态，其中包括开始的位置，对应的行动方案和行动代价
+    start = (problem.getStartState(), [], 0)
+    # 把起始状态放进frontier队列中，update方法会自动对其中的状态按照其行动代价进行排序
+    frontier.update(start,0)
+    # 构造循环，循环读取frontier中的状态，进行判定
+    while not frontier.isEmpty():
+        # 获取当前节点的各项信息
+        (node, path, cost) = frontier.pop()
+        # 如果弹出的节点状态满足目标要求，停止循环
+        if problem.isGoalState(node):
+            result = path
+            break
+        # 如果该节点该节点不满足目标要求，判定其是否访问过
+        if node not in explored:
+            explored.add(node)
+            # 遍历这个节点的子节点，更新frontier队列
+            for child,direction,step in problem.getSuccessors(node):
+                newPath = path + [direction]
+                newCost = cost + step
+                newNode = (child, newPath, newCost)
+                frontier.update(newNode, newCost)
+    # 返回计算结果，即一个行动方案
+    return result
+
+
+把起点加入open list
+重复如下过程：
+            遍历 open list ，查找 F 值最小的节点，把它作为当前要处理的节点。
+            把这个节点移到 close list 。
+            对当前方格的 8 个相邻方格的每一个方格？            
+                1.如果它是不可抵达的或者它在 close list 中，忽略它。否则，做如下操作。
+                2.如果它不在 open list 中，把它加入 open list ，并且把当前方格设置为它的父亲，记录该方格的 F ， G 和 H 值。
+                3.如果它已经在 open list 中，检查这条路径 ( 即经由当前方格到达它那里 ) 是否更好，用 G 值作参考。
+                    更小的 G 值表示这是更好的路径。如果是这样，把它的父亲设置为当前方格，并重新计算它的 G 和 F 值。
+                    如果你的 open list 是按 F 值排序的话，改变后你可能需要重新排序。
+            停止，当你
+                把终点加入到了open list中，此时路径已经找到了，或者
+                查找终点失败，并且 open list 是空的，此时没有路径。
+保存路径。从终点开始，每个方格沿着父节点移动直至起点，这就是正确路径。
+
+def astar(原图):
+    用c表示当前g值
+    将原图加进open中
+    while 1:
+        graph1 = 优先级最高的，从open中pop # f = g + h
+        将graph1加入close
+        遍历graph可能变成的情况: # 用g表示
+            如果它在close中:
+                pass
+            否则:
+                如果它不在open中:
+                    将g加入open
+                    把当前方格设置为它的父亲
+                    记录该方格的f,g,h值。
+                否则：
+                    当前c小于其g值:
+                        把它的父亲设置为当前方格
+                        重新计算它的g, f。
+                    
+        if graph == ans:
+            break
+        else:
+            if openl.empty():
+                print("----fail----")
+                return
+    ptpath()
+
+
+
+bool dfs(STATUS cur,int depth,int h,char preDir){
+	//IDA*估值函数剪枝
+	//当前局面的估价函数值+当前的搜索深度 > 预定义的最大搜索深度时剪枝
+	if(depth+h>maxDepth) return false;
+	 if(memcmp(&cur, &goal, sizeof(STATUS)) == 0 )  
+    {
+        path[depth] = '\0';  
+        return true;  
+    }  
+	STATUS next;
+	for(int i=0;i<4;++i){
+		if(dirCode[i]==preDir)continue;//不能回到上一状态
+		next=cur;
+		next.r = cur.r + dir[i][0];  
+        next.c = cur.c + dir[i][1];  
+        if( !( next.r >= 0 && next.r < 3 && next.c >= 0 && next.c < 3 ) )  
+            continue;
+		swap(next.data[cur.r][cur.c], next.data[next.r][next.c]); //置换变成新的状态
+		int nexth=H(next,goal);//重新计算h值
+		path[depth] = dirCode[i];  
+        if(dfs(next, depth + 1, nexth, rDirCode[i]))  
+            return true;  
+	}
+	return false;
+}
+int IDAstar(){
+	int h = H(start,goal);  
+    maxDepth = h;  
+    while (!dfs(start,0, h, '\0')) 
+        maxDepth++;  
+    return maxDepth;  
+}
+
+
+def dfs(当前图，深度，h):
+    若深度+h大于最大深度:
+        return false
+    若当前图 == 目标图:
+        return true
+    下一图
+    遍历下一图的可能性:
+        重新计算h值
+        记录路径
+        若dfs(下一图，深度+1，新h值)
+            return true
+    return false
+    
+
+def idastar():
+    计算h值
+    最大深度 = h
+    while(not dfs(argv...))
+        最大深度 = 最大深度 + 1
+    return 最大深度
